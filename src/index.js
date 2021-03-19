@@ -4,13 +4,32 @@ import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux';
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
+import firebase from 'firebase/app'
+import {createFirestoreInstance} from 'redux-firestore';
+import reduxStore from './store/reduxStore';
+
+const rrfProps = {
+    firebase,
+    config: {
+        userProfile: 'users',
+        useFirestoreForProfile: true,
+    },
+    dispatch: reduxStore.dispatch,
+    createFirestoreInstance
+}
 
 ReactDOM.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </React.StrictMode>,
+            <Provider store={reduxStore}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <App/>
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        </BrowserRouter>,
+    //</React.StrictMode>,
     document.getElementById('root')
 );
 
