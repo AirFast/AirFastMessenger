@@ -21,7 +21,7 @@ const rrfProps = {
 }
 
 ReactDOM.render(
-    // <React.StrictMode>
+    //<React.StrictMode>
         <BrowserRouter>
             <Provider store={reduxStore}>
                 <ReactReduxFirebaseProvider {...rrfProps}>
