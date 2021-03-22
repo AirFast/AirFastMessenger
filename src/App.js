@@ -9,13 +9,13 @@ import signup from './pages/signup';
 
 function App() {
     return (
-        <div className="App">
+        <div className='container'>
             <Navbar/>
             <Switch>
-                <Route exact path='/' component={home}/>
-                <Route exact path='/profile' component={profile}/>
-                <Route exact path='/login' component={login}/>
-                <Route exact path='/signup' component={signup}/>
+                <Route exact path={'/'} component={home}/>
+                <Route exact path={'/profile'} component={profile}/>
+                <Route exact path={'/login'} component={login}/>
+                <Route exact path={'/signup'} component={signup}/>
             </Switch>
         </div>
     );

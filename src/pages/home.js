@@ -8,7 +8,7 @@ const Home = (props) => {
     const {dialogs} = props;
 
     return (
-        <div>
+        <div className='row'>
             <h1>Home page</h1>
             <p>{dialogs && dialogs.map(dialog => (dialog.name))}</p>
         </div>
