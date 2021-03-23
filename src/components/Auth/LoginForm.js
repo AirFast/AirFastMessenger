@@ -31,7 +31,7 @@ class LoginForm extends Component {
     }
 
     handleBlur = e => {
-        if(!e.target.value.length) {
+        if (!e.target.value.length) {
             e.target.parentElement.classList.remove('input-label-up');
         }
     }
@@ -48,13 +48,17 @@ class LoginForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className='input-group'>
                         <label className='input-label' htmlFor="email">Email</label>
-                        <input className='input-control' type="email" id="email" value={this.state.email} onChange={this.handleChange} onFocus={this.handleFocus}
+                        <input className='input-control' type="email" id="email" value={this.state.email}
+                               onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
+                        <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
                         <label className='input-label' htmlFor="password">Password</label>
-                        <input className='input-control' type="password" id="password" value={this.state.password} onChange={this.handleChange} onFocus={this.handleFocus}
+                        <input className='input-control' type="password" id="password" value={this.state.password}
+                               onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
+                        <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
                         <button>Login</button>
