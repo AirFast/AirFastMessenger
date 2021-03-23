@@ -6,7 +6,7 @@ import SignInLinks from './SignInLinks';
 const Navbar = () => {
     return (
         <div className='row'>
-            <nav className={styles.navbar}>
+            <nav className={styles.navbar + ' col'}>
                 <SignOutLinks/>
                 <SignInLinks/>
             </nav>
