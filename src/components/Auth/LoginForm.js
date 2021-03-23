@@ -19,15 +19,20 @@ class LoginForm extends Component {
         this.setState({
             [e.target.id]: e.target.value
         });
+        if (!!e.target.checkValidity()) {
+            e.target.parentElement.classList.add('input-is-valid');
+        } else {
+            e.target.parentElement.classList.remove('input-is-valid');
+        }
     }
 
     handleFocus = e => {
-        e.target.classList.add('add');
+        e.target.parentElement.classList.add('input-label-up');
     }
 
     handleBlur = e => {
         if(!e.target.value.length) {
-            e.target.classList.remove('add');
+            e.target.parentElement.classList.remove('input-label-up');
         }
     }
 

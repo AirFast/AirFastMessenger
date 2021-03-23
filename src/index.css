@@ -855,7 +855,11 @@ code {
 }
 
 .input-group {
-  margin-bottom: 30px;
+  margin-bottom: 80px;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
 }
 
 .input-control {
@@ -864,4 +868,6 @@ code {
   sans-serif;
   border: none;
   font-size: inherit;
+  height: 40px;
+  padding: 5px;
 }
