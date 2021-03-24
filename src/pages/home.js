@@ -1,11 +1,13 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 
 const Home = (props) => {
 
-    const {dialogs} = props;
+    const {dialogs, auth} = props;
+    if (!auth.uid) return <Redirect to={'/login'}/>
 
     return (
         <div className='row'>
@@ -16,7 +18,8 @@ const Home = (props) => {
 }
 
 const mapStateToProps = state => ({
-    dialogs: state.firestore.ordered.dialogs
+    dialogs: state.firestore.ordered.dialogs,
+    auth: state.firebase.auth
 });
 
 export default compose(
