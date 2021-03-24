@@ -6,15 +6,10 @@ const SignInLinks = () => {
     return (
         <ul className={styles.navList}>
             <li className={styles.navItem}>
-                <NavLink exact to={'/'} activeClassName={styles.active}>Home</NavLink>
+                <NavLink to={'/login'} activeClassName={styles.active}>Login</NavLink>
             </li>
             <li className={styles.navItem}>
-                <button className={styles.navBtn}>Logout</button>
-            </li>
-            <li className={styles.navItem}>
-                <NavLink to={'/profile'} activeClassName={styles.active}>
-                    <span className={styles.profileAvatar}>AP</span>
-                </NavLink>
+                <NavLink to={'/signup'} activeClassName={styles.active}>Signup</NavLink>
             </li>
         </ul>
     );

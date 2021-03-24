@@ -4,8 +4,10 @@ import firebase from 'firebase/app';
 import {firebaseReducer, getFirebase} from 'react-redux-firebase';
 import {firestoreReducer, getFirestore, reduxFirestore} from 'redux-firestore';
 import {firebaseConfig} from '../config/firebaseConfig';
+import authReducer from './reducers/authReducer';
 
 const rootReducer = combineReducers({
+    auth: authReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer,
 });

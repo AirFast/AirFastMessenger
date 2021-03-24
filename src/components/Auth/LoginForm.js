@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {login} from '../../store/actions/authActions';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -38,10 +40,12 @@ class LoginForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.login(this.state);
     }
 
     render() {
+        const { authError } = this.props;
+
         return (
             <div className='col-5 col-md-7 col-sm-12 m-auto'>
                 <h2 className='t-center'>Login</h2>
@@ -63,6 +67,7 @@ class LoginForm extends Component {
                     <div className='input-group'>
                         <button className='input-btn'>Login</button>
                         <Link className='link' to={'/signup'}>Don't have an account yet?</Link>
+                        {authError && <span className='auth-form-err'>{authError}</span>}
                     </div>
                 </form>
             </div>
@@ -70,4 +75,12 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+const mapStateToProps = state => ({
+    authError: state.auth.authError,
+});
+
+const mapDispatchToProps = dispatch => ({
+    login: credentials => dispatch(login(credentials)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

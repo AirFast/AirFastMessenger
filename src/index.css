@@ -1011,3 +1011,10 @@ h6:first-child {
 .input-group .link:hover {
   color: #5895e0;
 }
+
+.auth-form-err {
+  display: block;
+  margin-top: 40px;
+  color: #ff0000;
+  text-align: center;
+}
