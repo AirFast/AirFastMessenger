@@ -43,9 +43,9 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <div className='col-6 m-auto'>
+            <div className='col-5 col-md-7 col-sm-12 m-auto'>
                 <h2 className='t-center'>Login</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form className='auth-form' onSubmit={this.handleSubmit}>
                     <div className='input-group'>
                         <label className='input-label' htmlFor="email">Email</label>
                         <input className='input-control' type="email" id="email" value={this.state.email}
@@ -61,8 +61,8 @@ class LoginForm extends Component {
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
-                        <button>Login</button>
-                        <Link to={'/signup'}>Don't have an account yet?</Link>
+                        <button className='input-btn'>Login</button>
+                        <Link className='link' to={'/signup'}>Don't have an account yet?</Link>
                     </div>
                 </form>
             </div>

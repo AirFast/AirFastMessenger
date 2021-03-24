@@ -3,6 +3,50 @@
   outline: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #000000;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+::-moz-selection {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+::selection {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -846,12 +890,34 @@ code {
   }
 }
 
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+  margin-top: 0;
+}
+
+.h-100 {
+  margin-top: -60px;
+  height: 100vh;
+}
+
 .t-center {
   text-align: center;
 }
 
 .m-auto {
-  margin: 0 auto;
+  margin: auto;
+}
+
+.auth-form {
+  margin-top: 60px;
+}
+
+.auth-form:first-child {
+  margin-top: 0;
 }
 
 .input-group {
@@ -861,6 +927,26 @@ code {
 
 .input-group:last-child {
   margin-bottom: 0;
+}
+
+.input-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 0 0 5px;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.input-is-valid .input-label {
+  color: #5895e0;
+}
+
+.input-label-up .input-label {
+  font-size: 13px;
+  bottom: 30px;
 }
 
 .input-control {
@@ -890,9 +976,38 @@ code {
   width: 0;
   height: 1px;
   background: #5895e0;
-  transition: all .5s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 .input-label-up .input-border-bottom:after {
   width: 100%;
+}
+
+.input-btn {
+  display: inline-block;
+  width: auto;
+  font-size: inherit;
+  border: none;
+  background: #2d2d2d;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 9px 25px;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+}
+
+.input-btn:hover {
+  background: #5895e0;
+}
+
+.input-group .link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 13px;
+  padding-left: 30px;
+  transition: all .2s ease-in-out;
+}
+
+.input-group .link:hover {
+  color: #5895e0;
 }
