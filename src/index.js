@@ -22,8 +22,17 @@ const rrfProps = {
 
 function AuthIsLoaded({children}) {
     const auth = useSelector(state => state.firebase.auth)
-    if (!isLoaded(auth)) return <div>splash screen...</div>;
-    return children
+    if (!isLoaded(auth)) {
+        return (
+            <div className='container'>
+                <div className="row h-100">
+                    <div className='col-auto m-auto'>App is loading...</div>
+                </div>
+            </div>
+        )
+    } else {
+        return children
+    }
 }
 
 ReactDOM.render(
@@ -31,9 +40,9 @@ ReactDOM.render(
     <BrowserRouter>
         <Provider store={reduxStore}>
             <ReactReduxFirebaseProvider {...rrfProps}>
-
+                <AuthIsLoaded>
                     <App/>
-
+                </AuthIsLoaded>
             </ReactReduxFirebaseProvider>
         </Provider>
     </BrowserRouter>,
