@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import SignupForm from '../components/Auth/SignupForm';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-class Signup extends Component {
-    render() {
-        return (
-            <div className='row h-100'>
-                <SignupForm/>
-            </div>
-        );
-    }
+const Signup = (props) => {
+    const {auth} = props;
+    if (auth.uid) return <Redirect to={'/'}/>
+
+    return (
+        <div className='row h-100'>
+            <SignupForm/>
+        </div>
+    );
 }
 
-export default Signup;
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+})
+
+export default connect(mapStateToProps)(Signup);

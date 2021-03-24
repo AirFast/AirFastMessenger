@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import LoginForm from '../components/Auth/LoginForm';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-class Login extends Component {
-    render() {
-        return (
-            <div className='row h-100'>
-                <LoginForm/>
-            </div>
-        );
-    }
+const Login = (props) => {
+    const {auth} = props;
+    if (auth.uid) return <Redirect to={'/'}/>
+
+    return (
+        <div className='row h-100'>
+            <LoginForm/>
+        </div>
+    );
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+})
+
+export default connect(mapStateToProps)(Login);
