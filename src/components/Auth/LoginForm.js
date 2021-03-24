@@ -50,7 +50,7 @@ class LoginForm extends Component {
                         <label className='input-label' htmlFor="email">Email</label>
                         <input className='input-control' type="email" id="email" value={this.state.email}
                                onChange={this.handleChange} onFocus={this.handleFocus}
-                               onBlur={this.handleBlur} required/>
+                               onBlur={this.handleBlur} required autoFocus/>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
