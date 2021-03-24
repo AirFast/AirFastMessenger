@@ -50,36 +50,37 @@ class SignupForm extends Component {
                 <h2 className='t-center'>Signup</h2>
                 <form className='auth-form' onSubmit={this.handleSubmit}>
                     <div className='input-group'>
-                        <label className='input-label' htmlFor="firstName">First name</label>
-                        <input className='input-control' type="text" id="firstName" value={this.state.firstName}
+                        <label className='input-label' htmlFor='firstName'>First name</label>
+                        <input className='input-control' type='text' id='firstName' value={this.state.firstName}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required autoFocus/>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
-                        <label className='input-label' htmlFor="lastName">Last name</label>
-                        <input className='input-control' type="text" id="lastName" value={this.state.lastName}
+                        <label className='input-label' htmlFor='lastName'>Last name</label>
+                        <input className='input-control' type='text' id='lastName' value={this.state.lastName}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
-                        <label className='input-label' htmlFor="email">Email</label>
-                        <input className='input-control' type="email" id="email" value={this.state.email}
+                        <label className='input-label' htmlFor='email'>Email</label>
+                        <input className='input-control' type='email' id='email' value={this.state.email}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
-                        <label className='input-label' htmlFor="password">Password</label>
-                        <input className='input-control' type="password" id="password" value={this.state.password}
+                        <label className='input-label' htmlFor='password'>Password</label>
+                        <input className='input-control' type='password" id=' password'' value={this.state.password}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
-                        <label className='input-label' htmlFor="passwordConfirm">Confirm password</label>
-                        <input className='input-control' type="password" id="passwordConfirm" value={this.state.passwordConfirm}
+                        <label className='input-label' htmlFor='passwordConfirm'>Confirm password</label>
+                        <input className='input-control' type='password' id='passwordConfirm'
+                               value={this.state.passwordConfirm}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
                         <span className='input-border-bottom'></span>

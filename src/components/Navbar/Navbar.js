@@ -5,13 +5,13 @@ import SignInLinks from './SignInLinks';
 import SignOutLinks from './SignOutLinks';
 
 const Navbar = (props) => {
-    const { auth } = props;
-    const links = auth.uid ? <SignOutLinks /> : <SignInLinks />
+    const {auth} = props;
+    const links = auth.uid ? <SignOutLinks/> : <SignInLinks/>
 
     return (
         <div className='row'>
             <nav className={styles.navbar + ' col'}>
-                { links }
+                {links}
             </nav>
         </div>
     );

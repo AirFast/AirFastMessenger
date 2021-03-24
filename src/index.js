@@ -25,7 +25,7 @@ function AuthIsLoaded({children}) {
     if (!isLoaded(auth)) {
         return (
             <div className='container'>
-                <div className="row h-100">
+                <div className='row h-100'>
                     <div className='col-auto m-auto'>App is loading...</div>
                 </div>
             </div>
