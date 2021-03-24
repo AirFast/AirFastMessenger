@@ -4,8 +4,8 @@ import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux';
-import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
+import {Provider, useSelector} from 'react-redux';
+import {isLoaded, ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import firebase from 'firebase/app'
 import {createFirestoreInstance} from 'redux-firestore';
 import reduxStore from './store/reduxStore';
@@ -20,15 +20,23 @@ const rrfProps = {
     createFirestoreInstance
 }
 
+function AuthIsLoaded({children}) {
+    const auth = useSelector(state => state.firebase.auth)
+    if (!isLoaded(auth)) return <div>splash screen...</div>;
+    return children
+}
+
 ReactDOM.render(
     //<React.StrictMode>
-        <BrowserRouter>
-            <Provider store={reduxStore}>
-                <ReactReduxFirebaseProvider {...rrfProps}>
+    <BrowserRouter>
+        <Provider store={reduxStore}>
+            <ReactReduxFirebaseProvider {...rrfProps}>
+
                     <App/>
-                </ReactReduxFirebaseProvider>
-            </Provider>
-        </BrowserRouter>,
+
+            </ReactReduxFirebaseProvider>
+        </Provider>
+    </BrowserRouter>,
     //</React.StrictMode>,
     document.getElementById('root')
 );
