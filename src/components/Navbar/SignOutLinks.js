@@ -5,6 +5,8 @@ import {logout} from '../../store/actions/authActions';
 import styles from './Navbar.module.css';
 
 const SignOutLinks = (props) => {
+
+    console.log(props)
     return (
         <ul className={styles.navList}>
             <li className={styles.navItem}>
@@ -15,15 +17,21 @@ const SignOutLinks = (props) => {
             </li>
             <li className={styles.navItem}>
                 <NavLink to={'/profile'} activeClassName={styles.active}>
-                    <span className={styles.profileAvatar}>AP</span>
+                    <span className={styles.profileAvatar}>
+                        {props.profile.isLoaded && (props.profile.initials ? props.profile.initials : 'n/a')}
+                    </span>
                 </NavLink>
             </li>
         </ul>
     );
 }
 
+const mapStateToProps = state => ({
+    profile: state.firebase.profile,
+})
+
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
 })
 
-export default connect(null, mapDispatchToProps)(SignOutLinks);
+export default connect(mapStateToProps, mapDispatchToProps)(SignOutLinks);
