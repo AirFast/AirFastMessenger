@@ -44,7 +44,7 @@ class LoginForm extends Component {
     }
 
     render() {
-        const { authError } = this.props;
+        const {loginError} = this.props;
 
         return (
             <div className='col-5 col-md-7 col-sm-12 p-60 m-auto'>
@@ -52,7 +52,7 @@ class LoginForm extends Component {
                 <form className='auth-form' onSubmit={this.handleSubmit}>
                     <div className='input-group'>
                         <label className='input-label' htmlFor='email'>Email</label>
-                        <input className='input-control' type='email' id='email' value={this.state.email}
+                        <input className='input-control' type='text' id='email' value={this.state.email}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required autoFocus/>
                         <span className='input-border-bottom'></span>
@@ -66,8 +66,9 @@ class LoginForm extends Component {
                     </div>
                     <div className='input-group'>
                         <button className='input-btn'>Login</button>
-                        <span className='auth-form-info'>Don't have an account yet? <Link className='link' to={'/signup'}>Signup.</Link></span>
-                        {authError && <span className='auth-form-err'>{authError}</span>}
+                        <span className='auth-form-info'>Don't have an account yet? <Link className='link'
+                                                                                          to={'/signup'}>Signup.</Link></span>
+                        {loginError && <span className='auth-form-err'>{loginError}</span>}
                     </div>
                 </form>
             </div>
@@ -76,7 +77,7 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    authError: state.auth.authError,
+    loginError: state.auth.loginError,
 });
 
 const mapDispatchToProps = dispatch => ({

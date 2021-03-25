@@ -1,26 +1,46 @@
-import {LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT_SUCCESS} from '../actions/authActions';
+import {
+    LOGIN_ERROR,
+    LOGIN_SUCCESS,
+    LOGOUT_SUCCESS,
+    SIGNUP_ERROR,
+    SIGNUP_SUCCESS,
+    SIGNUP_VALIDATION_ERROR
+} from '../actions/authActions';
 
 const initState = {
-    authError: null
+    loginError: null,
+    signupError: null
 };
 
 const authReducer = (state = initState, action) => {
     switch (action.type) {
         case LOGIN_ERROR:
-            console.error('login err');
             return {
                 ...state,
-                authError: 'Login failed...'
+                loginError: action.err.message
             };
         case LOGIN_SUCCESS:
-            console.log('login');
             return {
                 ...state,
-                authError: null
+                loginError: null
             }
         case LOGOUT_SUCCESS:
-            console.log('logout');
             return state;
+        case SIGNUP_ERROR:
+            return {
+                ...state,
+                signupError: action.err.message
+            };
+        case SIGNUP_SUCCESS:
+            return {
+                ...state,
+                signupError: null
+            }
+        case SIGNUP_VALIDATION_ERROR:
+            return {
+                ...state,
+                signupError: 'The password confirmation does not match.'
+            }
         default:
             return state;
     }
