@@ -46,7 +46,7 @@ class SignupForm extends Component {
 
     render() {
         return (
-            <div className='col-5 col-md-7 col-sm-12 m-auto'>
+            <div className='col-5 col-md-7 col-sm-12 p-60 m-auto'>
                 <h2 className='t-center'>Signup</h2>
                 <form className='auth-form' onSubmit={this.handleSubmit}>
                     <div className='input-group'>

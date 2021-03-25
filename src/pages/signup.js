@@ -8,7 +8,7 @@ const Signup = (props) => {
     if (auth.uid) return <Redirect to={'/'}/>
 
     return (
-        <div className='row h-100'>
+        <div className='row'>
             <SignupForm/>
         </div>
     );

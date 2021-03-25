@@ -899,9 +899,12 @@ h6:first-child {
   margin-top: 0;
 }
 
-.h-100 {
-  margin-top: -60px;
-  height: 100vh;
+.p-60 {
+  padding: 60px 0;
+}
+
+.p-100 {
+  padding: 100px 0;
 }
 
 .t-center {
