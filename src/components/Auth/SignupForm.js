@@ -72,7 +72,7 @@ class SignupForm extends Component {
                     </div>
                     <div className='input-group'>
                         <label className='input-label' htmlFor='password'>Password</label>
-                        <input className='input-control' type='password" id=' password'' value={this.state.password}
+                        <input className='input-control' type='password' id='password' value={this.state.password}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
                         <span className='input-border-bottom'></span>
@@ -87,7 +87,7 @@ class SignupForm extends Component {
                     </div>
                     <div className='input-group'>
                         <button className='input-btn'>Signup</button>
-                        <Link className='link' to={'/login'}>Already have an account?</Link>
+                        <span className="auth-form-info">Already have an account? <Link className='link' to={'/login'}>Login.</Link></span>
                     </div>
                 </form>
             </div>

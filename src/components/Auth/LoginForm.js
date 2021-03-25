@@ -66,7 +66,7 @@ class LoginForm extends Component {
                     </div>
                     <div className='input-group'>
                         <button className='input-btn'>Login</button>
-                        <Link className='link' to={'/signup'}>Don't have an account yet?</Link>
+                        <span className='auth-form-info'>Don't have an account yet? <Link className='link' to={'/signup'}>Signup.</Link></span>
                         {authError && <span className='auth-form-err'>{authError}</span>}
                     </div>
                 </form>
