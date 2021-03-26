@@ -1083,6 +1083,68 @@ h6:first-child {
     padding: 5px;
 }
 
+.input-show-password {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.eye-icon {
+    position: relative;
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg);
+    border: 2px solid #cccccc;
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    border-top-left-radius: 70%;
+    border-bottom-right-radius: 70%;
+    transition: all .2s ease-in-out;
+}
+
+.eye-icon:hover,
+.eye-icon:hover:before {
+    border-color: #2d2d2d;
+}
+
+.eye-icon:hover:after {
+    background: #2d2d2d;
+}
+
+.eye-icon:before {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 2px solid #cccccc;
+    border-radius: 100%;
+    margin: auto;
+    transition: all .2s ease-in-out;
+}
+
+.eye-icon:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 2px;
+    height: 160%;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #cccccc;
+    transition: all .2s ease-in-out;
+}
+
+.eye-icon.show:after {
+    display: none;
+}
+
 .input-border-bottom {
     position: absolute;
     left: 0;

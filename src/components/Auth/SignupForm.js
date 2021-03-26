@@ -95,7 +95,7 @@ class SignupForm extends Component {
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
-                        <button className='input-btn'>Signup</button>
+                        <button type='submit' className='input-btn'>Signup</button>
                         <span className="auth-form-info">Already have an account? <Link className='link'
                                                                                         to={'/login'}>Login.</Link></span>
                         {signupError && <span className='auth-form-err'>{signupError}</span>}
