@@ -8,6 +8,7 @@ import {
 } from '../actions/authActions';
 
 const initState = {
+
     loginError: null,
     signupError: null
 };
