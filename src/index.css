@@ -1100,21 +1100,21 @@ h6:first-child {
     width: 22px;
     height: 22px;
     transform: rotate(45deg);
-    border: 2px solid #cccccc;
+    border: 2px solid #aaaaaa;
     border-top-right-radius: 20%;
     border-bottom-left-radius: 20%;
-    border-top-left-radius: 70%;
-    border-bottom-right-radius: 70%;
+    border-top-left-radius: 65%;
+    border-bottom-right-radius: 65%;
     transition: all .2s ease-in-out;
 }
 
 .eye-icon:hover,
 .eye-icon:hover:before {
-    border-color: #2d2d2d;
+    border-color: #5895e0;
 }
 
 .eye-icon:hover:after {
-    background: #2d2d2d;
+    background: #5895e0;
 }
 
 .eye-icon:before {
@@ -1122,7 +1122,7 @@ h6:first-child {
     content: '';
     width: 10px;
     height: 10px;
-    border: 2px solid #cccccc;
+    border: 2px solid #aaaaaa;
     border-radius: 100%;
     margin: auto;
     transition: all .2s ease-in-out;
@@ -1137,7 +1137,7 @@ h6:first-child {
     top: -30%;
     left: 50%;
     transform: translateX(-50%);
-    background: #cccccc;
+    background: #aaaaaa;
     transition: all .2s ease-in-out;
 }
 
