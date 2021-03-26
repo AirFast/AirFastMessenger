@@ -11,12 +11,16 @@ class SignupForm extends Component {
             lastName: '',
             email: '',
             password: '',
-            passwordConfirm: ''
+            passwordConfirm: '',
+            hiddenPassword: true,
+            hiddenPasswordConfirm: true
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+        this.handleToggleShowPassword = this.handleToggleShowPassword.bind(this);
+        this.handleToggleShowPasswordConfirm = this.handleToggleShowPasswordConfirm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -40,6 +44,18 @@ class SignupForm extends Component {
             e.target.parentElement.classList.remove('input-label-up');
         }
     }
+
+    handleToggleShowPassword = () => {
+        this.setState({
+            hiddenPassword: !this.state.hiddenPassword
+        });
+    };
+
+    handleToggleShowPasswordConfirm = () => {
+        this.setState({
+            hiddenPasswordConfirm: !this.state.hiddenPasswordConfirm
+        });
+    };
 
     handleSubmit = e => {
         e.preventDefault();
@@ -81,17 +97,23 @@ class SignupForm extends Component {
                     </div>
                     <div className='input-group'>
                         <label className='input-label' htmlFor='password'>Password</label>
-                        <input className='input-control' type='password' id='password' value={this.state.password}
+                        <input className='input-control' type={this.state.hiddenPassword ? 'password' : 'text'} id='password' value={this.state.password}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
+                        <button className='input-show-password' type='button' onClick={this.handleToggleShowPassword}>
+                            <i className={this.state.hiddenPassword ? 'eye-icon' : 'eye-icon show'}></i>
+                        </button>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
                         <label className='input-label' htmlFor='passwordConfirm'>Confirm password</label>
-                        <input className='input-control' type='password' id='passwordConfirm'
+                        <input className='input-control' type={this.state.hiddenPasswordConfirm ? 'password' : 'text'} id='passwordConfirm'
                                value={this.state.passwordConfirm}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
+                        <button className='input-show-password' type='button' onClick={this.handleToggleShowPasswordConfirm}>
+                            <i className={this.state.hiddenPasswordConfirm ? 'eye-icon' : 'eye-icon show'}></i>
+                        </button>
                         <span className='input-border-bottom'></span>
                     </div>
                     <div className='input-group'>
