@@ -6,25 +6,32 @@ import {compose} from 'redux';
 
 const Home = (props) => {
 
-    const {dialogs, auth} = props;
+    const {auth, users} = props;
     if (!auth.uid) return <Redirect to={'/login'}/>
 
     return (
-        <div className='row'>
-            <h1>Home page</h1>
-            <p>{dialogs && dialogs.map(dialog => (dialog.name))}</p>
-        </div>
+        <>
+            <div className='row'>
+                <div className='col-5 col-md-7 col-sm-12 p-60 m-auto'>
+                    <h2 className='t-center'>Users</h2>
+                    <p className='t-center'>List of users registered in this network.</p>
+                </div>
+            </div>
+            <div className='row'>
+                <p>{users && users.map(user => (user.initials))}</p>
+            </div>
+        </>
     );
 }
 
 const mapStateToProps = state => ({
-    dialogs: state.firestore.ordered.dialogs,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    users: state.firestore.ordered.users,
 });
 
 export default compose(
     firestoreConnect([
-        {collection: 'dialogs'}
+        {collection: 'users'}
     ]),
     connect(mapStateToProps),
 )(Home);

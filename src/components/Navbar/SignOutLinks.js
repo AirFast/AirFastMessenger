@@ -5,8 +5,6 @@ import {logout} from '../../store/actions/authActions';
 import styles from './Navbar.module.css';
 
 const SignOutLinks = (props) => {
-
-    console.log(props)
     return (
         <ul className={styles.navList}>
             <li className={styles.navItem}>
