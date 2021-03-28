@@ -8,13 +8,14 @@ const ProfileCard = (props) => {
     return (
         <div className='col-4 col-md-6 col-sm-12 p-60 t-center'>
             <Link to={'/profile/' + user.id} className={styles.profileLink}>
-                <span className={styles.profileAvatar}>
-                    {user.initials ? user.initials : 'n/a'}
-                </span>
+                    <span className={styles.profileAvatar}>
+                        {user.initials ? user.initials : 'n/a'}
+                    </span>
                 <h4 className={styles.profileName}>{user.firstName + ' ' + user.lastName}</h4>
             </Link>
         </div>
     );
+
 }
 
 export default ProfileCard;

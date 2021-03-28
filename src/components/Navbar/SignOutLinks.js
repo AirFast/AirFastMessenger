@@ -14,7 +14,7 @@ const SignOutLinks = (props) => {
                 <button className={styles.navBtn} onClick={props.logout}>Logout</button>
             </li>
             <li className={styles.navItem}>
-                <NavLink to={'/profile'} activeClassName={styles.active}>
+                <NavLink exact to={'/profile'} activeClassName={styles.active}>
                     <span className={styles.profileAvatar}>
                         {props.profile.isLoaded && (props.profile.initials ? props.profile.initials : 'n/a')}
                     </span>

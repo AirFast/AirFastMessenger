@@ -19,7 +19,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className='row'>
-                {users && users.map(user => <ProfileCard user={user} key={user.id}/>)}
+                {users ? users.map(user => <ProfileCard user={user} key={user.id}/>) : <div className='col-auto p-60 m-auto'>Users is loading...</div>}
             </div>
         </>
     );
