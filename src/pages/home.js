@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
+import ProfileCard from '../components/Profile/ProfileCard';
 
 const Home = (props) => {
 
@@ -18,7 +19,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className='row'>
-                <p>{users && users.map(user => (user.initials))}</p>
+                {users && users.map(user => <ProfileCard user={user} key={user.id}/>)}
             </div>
         </>
     );

@@ -1,10 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import styles from './Profile.module.css';
 
-const ProfileCard = () => {
+const ProfileCard = (props) => {
+    const {user} = props;
+
     return (
-        <div className='col-3 col-md-7 col-sm-12 p-60 m-auto'>
-            <h2 className='t-center'>Users</h2>
-            <p className='t-center'>List of users registered in this network.</p>
+        <div className='col-4 col-md-6 col-sm-12 p-60 t-center'>
+            <Link to={'/profile/' + user.id} className={styles.profileLink}>
+                <span className={styles.profileAvatar}>
+                    {user.initials ? user.initials : 'n/a'}
+                </span>
+                <h4 className={styles.profileName}>{user.firstName + ' ' + user.lastName}</h4>
+            </Link>
         </div>
     );
 }
