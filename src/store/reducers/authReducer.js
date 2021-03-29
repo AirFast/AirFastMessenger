@@ -1,5 +1,5 @@
 import {
-    CHANGE_LOGIN_INPUTS,
+    CHANGE_LOGIN_INPUTS, CHANGE_SIGNUP_INPUTS,
     LOGIN_ERROR,
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
@@ -35,7 +35,7 @@ const authReducer = (state = initState, action) => {
                 }
             }
         case LOGIN_ERROR:
-            return  {
+            return {
                 ...state,
                 login: {
                     ...state.login,
@@ -54,20 +54,43 @@ const authReducer = (state = initState, action) => {
             }
         case LOGOUT_SUCCESS:
             return state;
+        case CHANGE_SIGNUP_INPUTS:
+            return {
+                ...state,
+                signup: {
+                    ...state.signup,
+                    [action.payloads.id]: action.payloads.value
+                }
+            }
+
         case SIGNUP_ERROR:
             return {
                 ...state,
-                signupError: action.err.message
+                signup: {
+                    ...state.signup,
+                    signupError: action.err.message
+                }
             };
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                signupError: null
+                signup: {
+                    ...state.signup,
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
+                    passwordConfirm: '',
+                    signupError: null
+                }
             }
         case SIGNUP_VALIDATION_ERROR:
             return {
                 ...state,
-                signupError: 'The password confirmation does not match.'
+                signup: {
+                    ...state.signup,
+                    signupError: 'The password confirmation does not match.'
+                }
             }
         default:
             return state;

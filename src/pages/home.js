@@ -6,6 +6,7 @@ import {compose} from 'redux';
 import ProfileCard from '../components/Profile/ProfileCard';
 
 const Home = (props) => {
+
     const {auth, users} = props;
     if (!auth.uid) return <Redirect to={'/login'}/>
 

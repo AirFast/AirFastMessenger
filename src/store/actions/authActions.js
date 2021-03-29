@@ -2,6 +2,7 @@ export const CHANGE_LOGIN_INPUTS = 'CHANGE_LOGIN_INPUTS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const CHANGE_SIGNUP_INPUTS = 'CHANGE_SIGNUP_INPUTS';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const SIGNUP_VALIDATION_ERROR = 'SIGNUP_VALIDATION_ERROR';
@@ -34,6 +35,12 @@ export const logout = () => {
         firebase.auth().signOut().then(() => {
             dispatch({type: LOGOUT_SUCCESS});
         });
+    }
+};
+
+export const changeSignupInputs = payloads => {
+    return (dispatch, getState) => {
+        dispatch({type: CHANGE_SIGNUP_INPUTS, payloads});
     }
 };
 
