@@ -1,9 +1,16 @@
+export const CHANGE_LOGIN_INPUTS = 'CHANGE_LOGIN_INPUTS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const SIGNUP_VALIDATION_ERROR = 'SIGNUP_VALIDATION_ERROR';
+
+export const changeLoginInputs = payloads => {
+    return (dispatch, getState) => {
+        dispatch({type: CHANGE_LOGIN_INPUTS, payloads});
+    }
+};
 
 export const login = credentials => {
     return (dispatch, getState, {getFirebase}) => {
@@ -43,17 +50,17 @@ export const signup = newUser => {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0]
-            })
+            });
         }).then(() => {
-            dispatch({type: SIGNUP_SUCCESS})
+            dispatch({type: SIGNUP_SUCCESS});
         }).catch(err => {
-            dispatch({type: SIGNUP_ERROR, err})
-        })
+            dispatch({type: SIGNUP_ERROR, err});
+        });
     }
 };
 
 export const signupValidationError = () => {
     return (dispatch, getState) => {
-        dispatch({type: SIGNUP_VALIDATION_ERROR})
+        dispatch({type: SIGNUP_VALIDATION_ERROR});
     }
-}
+};

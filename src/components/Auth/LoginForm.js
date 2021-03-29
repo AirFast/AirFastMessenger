@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {login} from '../../store/actions/authActions';
+import {changeLoginInputs, login} from '../../store/actions/authActions';
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
             hiddenPassword: true
         }
 
@@ -20,9 +18,8 @@ class LoginForm extends Component {
     };
 
     handleChange = e => {
-        this.setState({
-            [e.target.id]: e.target.value
-        });
+        this.props.changeLoginInputs(e.target);
+
         if (!!e.target.checkValidity()) {
             e.target.parentElement.classList.add('input-is-valid');
         } else {
@@ -48,27 +45,27 @@ class LoginForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.login(this.state);
+        this.props.login(this.props.loginForm);
     };
 
     render() {
-        const {loginError} = this.props;
+        const {loginForm} = this.props;
 
         return (
             <div className='col-5 col-md-7 col-sm-12 p-60 m-auto'>
                 <h2 className='t-center'>Login</h2>
                 <form className='auth-form' onSubmit={this.handleSubmit}>
-                    <div className='input-group'>
+                    <div className={loginForm.email ? 'input-group input-label-up' : 'input-group'}>
                         <label className='input-label' htmlFor='email'>Email</label>
-                        <input className='input-control' type='text' id='email' value={this.state.email}
+                        <input className='input-control' type='text' id='email' value={loginForm.email}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required autoFocus/>
                         <span className='input-border-bottom'></span>
                     </div>
-                    <div className='input-group'>
+                    <div className={loginForm.password ? 'input-group input-label-up' : 'input-group'}>
                         <label className='input-label' htmlFor='password'>Password</label>
                         <input className='input-control' type={this.state.hiddenPassword ? 'password' : 'text'}
-                               id='password' value={this.state.password}
+                               id='password' value={loginForm.password}
                                onChange={this.handleChange} onFocus={this.handleFocus}
                                onBlur={this.handleBlur} required/>
                         <button className='input-show-password' type='button' onClick={this.handleToggleShowPassword}>
@@ -80,7 +77,7 @@ class LoginForm extends Component {
                         <button type='submit' className='input-btn'>Login</button>
                         <span className='auth-form-info'>Don't have an account yet? <Link className='link'
                                                                                           to={'/signup'}>Signup.</Link></span>
-                        {loginError && <span className='auth-form-err'>{loginError}</span>}
+                        {loginForm.loginError && <span className='auth-form-err'>{loginForm.loginError}</span>}
                     </div>
                 </form>
             </div>
@@ -89,10 +86,11 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    loginError: state.auth.loginError,
+    loginForm: state.auth.login,
 });
 
 const mapDispatchToProps = dispatch => ({
+    changeLoginInputs: payloads => dispatch(changeLoginInputs(payloads)),
     login: credentials => dispatch(login(credentials)),
 });
 

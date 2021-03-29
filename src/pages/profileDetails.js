@@ -1,8 +1,8 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {compose} from "redux";
-import {firestoreConnect} from "react-redux-firebase";
+import {compose} from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
 
 const ProfileDetails = (props) => {
     const {auth, user} = props;

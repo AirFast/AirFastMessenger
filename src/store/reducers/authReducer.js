@@ -1,4 +1,5 @@
 import {
+    CHANGE_LOGIN_INPUTS,
     LOGIN_ERROR,
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
@@ -8,22 +9,48 @@ import {
 } from '../actions/authActions';
 
 const initState = {
-
-    loginError: null,
-    signupError: null
+    login: {
+        email: '',
+        password: '',
+        loginError: null
+    },
+    signup: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        passwordConfirm: '',
+        signupError: null
+    }
 };
 
 const authReducer = (state = initState, action) => {
     switch (action.type) {
-        case LOGIN_ERROR:
+        case CHANGE_LOGIN_INPUTS:
             return {
                 ...state,
-                loginError: action.err.message
+                login: {
+                    ...state.login,
+                    [action.payloads.id]: action.payloads.value
+                }
+            }
+        case LOGIN_ERROR:
+            return  {
+                ...state,
+                login: {
+                    ...state.login,
+                    loginError: action.err.message
+                }
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                loginError: null
+                login: {
+                    ...state.login,
+                    email: '',
+                    password: '',
+                    loginError: null
+                }
             }
         case LOGOUT_SUCCESS:
             return state;
