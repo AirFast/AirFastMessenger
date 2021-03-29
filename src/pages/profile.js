@@ -1,22 +1,31 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+import ProfileSettingsForm from "../components/Profile/ProfileSettingsForm";
 
 const Profile = (props) => {
-    const {auth} = props;
+    const {auth, profile} = props;
     if (!auth.uid) return <Redirect to={'/login'}/>
 
-    console.log(auth)
-
     return (
-        <div className='row'>
-            <h1>Profile page</h1>
-        </div>
+        <>
+            <div className='row'>
+                <div className='col-5 col-md-7 col-sm-12 p-60 m-auto'>
+                    <h2 className='t-center'>{profile.firstName} {profile.lastName}</h2>
+                    <p className='t-center'>This is your profile page. Here you can make the necessary settings.</p>
+                </div>
+            </div>
+            <div className='row'>
+                <ProfileSettingsForm/>
+            </div>
+        </>
+
     );
 }
 
 const mapStateToProps = state => ({
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
 });
 
 export default connect(mapStateToProps)(Profile);
