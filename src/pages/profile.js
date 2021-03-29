@@ -6,6 +6,8 @@ const Profile = (props) => {
     const {auth} = props;
     if (!auth.uid) return <Redirect to={'/login'}/>
 
+    console.log(auth)
+
     return (
         <div className='row'>
             <h1>Profile page</h1>
