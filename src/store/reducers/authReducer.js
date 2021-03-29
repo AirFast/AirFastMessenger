@@ -62,7 +62,6 @@ const authReducer = (state = initState, action) => {
                     [action.payloads.id]: action.payloads.value
                 }
             }
-
         case SIGNUP_ERROR:
             return {
                 ...state,
