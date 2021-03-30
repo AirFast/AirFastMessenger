@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import styles from './Profile.module.css';
 import {updateProfile} from '../../store/actions/profileActions';
 
 class ProfileSettingsForm extends Component {
@@ -28,14 +29,25 @@ class ProfileSettingsForm extends Component {
     }
 
     render() {
+        const {profile} = this.props;
+
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className='w-100' onSubmit={this.handleSubmit}>
                 <div className='row'>
-                    <div className="col-6">
-                        <input type='file' id='photoURL' onChange={this.handleChange}/>
+                    <div className='col-6 t-center'>
+                        <span className={styles.profileSettingsAvatar}>
+                            {profile.photoURL ? <img src={profile.photoURL}
+                                                     alt={profile.firstName + ' ' + profile.lastName}/> : profile.initials}
+                        </span>
+                        <div className='t-center p-60'>
+                            <label htmlFor='photoURL' className='input-file-label'>Choose a photo</label>
+                            <input className='input-file-btn' type='file' id='photoURL' onChange={this.handleChange}/>
+                        </div>
                     </div>
-                    <div className="col-6">
-                        <button type='submit'>Update</button>
+                    <div className='col-6'>
+                        <h2>{profile.firstName} {profile.lastName}</h2>
+                        <p>This is your profile page. Here you can make the necessary settings.</p>
+                        <button className='input-btn' type='submit'>Update</button>
                     </div>
                 </div>
             </form>
@@ -44,7 +56,7 @@ class ProfileSettingsForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    auth: state.firebase.auth
+    profile: state.firebase.profile,
 });
 
 const mapDispatchToProps = dispatch => ({

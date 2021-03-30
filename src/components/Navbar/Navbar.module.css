@@ -54,14 +54,14 @@
     text-align: center;
     text-transform: uppercase;
     line-height: 45px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     transition: border .2s;
     overflow: hidden;
 }
 
 .navItem a:hover .profileAvatar,
 .navItem a.active .profileAvatar {
-    border: 1px solid #5895e0;
+    border: 2px solid #5895e0;
 }
 
 .profileImage {
