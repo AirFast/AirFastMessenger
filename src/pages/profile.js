@@ -1,14 +1,12 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import ProfileSettingsForm from "../components/Profile/ProfileSettingsForm";
-import firebase from "firebase/app";
+import ProfileSettingsForm from '../components/Profile/ProfileSettingsForm';
+import firebase from 'firebase/app';
 
 const Profile = (props) => {
     const {auth, profile} = props;
     if (!auth.uid) return <Redirect to={'/login'}/>
-
-    console.log(profile)
 
     firebase.storage().ref(profile.profileImg).getDownloadURL().then(url => {
         console.log(url);
