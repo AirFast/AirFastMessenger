@@ -5,6 +5,8 @@ import {logout} from '../../store/actions/authActions';
 import styles from './Navbar.module.css';
 
 const SignOutLinks = (props) => {
+    const {profile} = props;
+
     return (
         <ul className={styles.navList}>
             <li className={styles.navItem}>
@@ -16,7 +18,7 @@ const SignOutLinks = (props) => {
             <li className={styles.navItem}>
                 <NavLink exact to={'/profile'} activeClassName={styles.active}>
                     <span className={styles.profileAvatar}>
-                        {props.profile.isLoaded && (props.profile.initials ? props.profile.initials : 'n/a')}
+                        {profile.isLoaded && (profile.photoURL ? <img className={styles.profileImage} src={profile.photoURL} alt={profile.firstName + ' ' + profile.lastName}/> : profile.initials)}
                     </span>
                 </NavLink>
             </li>

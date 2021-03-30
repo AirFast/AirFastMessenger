@@ -24,7 +24,7 @@ class ProfileSettingsForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.updateProfile(this.state.file)
+        this.props.updateProfile(this.state.file);
     }
 
     render() {
@@ -43,8 +43,12 @@ class ProfileSettingsForm extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    auth: state.firebase.auth
+});
+
 const mapDispatchToProps = dispatch => ({
-    updateProfile: payload => dispatch(updateProfile(payload))
+    updateProfile: payload => dispatch(updateProfile(payload)),
 })
 
-export default connect(null, mapDispatchToProps)(ProfileSettingsForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileSettingsForm);
