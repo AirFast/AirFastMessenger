@@ -29,9 +29,15 @@
     border-radius: 100%;
     background: #eee;
     text-align: center;
+    border: 2px solid transparent;
     text-transform: uppercase;
     line-height: 100px;
     overflow: hidden;
+    transition: all .2s ease-in-out;
+}
+
+.profileSettingsAvatar:hover {
+    border: 2px solid #5895e0;
 }
 
 .profileAvatar img,

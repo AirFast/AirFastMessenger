@@ -35,14 +35,13 @@ class ProfileSettingsForm extends Component {
             <form className='w-100' onSubmit={this.handleSubmit}>
                 <div className='row'>
                     <div className='col-6 t-center'>
-                        <span className={styles.profileSettingsAvatar}>
-                            {profile.photoURL ? <img src={profile.photoURL}
-                                                     alt={profile.firstName + ' ' + profile.lastName}/> : profile.initials}
-                        </span>
-                        <div className='t-center p-60'>
-                            <label htmlFor='photoURL' className='input-file-label'>Choose a photo</label>
-                            <input className='input-file-btn' type='file' id='photoURL' onChange={this.handleChange}/>
-                        </div>
+                        <label htmlFor='photoURL' className='input-file-label'>
+                            <span className={styles.profileSettingsAvatar}>
+                                {profile.photoURL ? <img src={profile.photoURL}
+                                                         alt={profile.firstName + ' ' + profile.lastName}/> : profile.initials}
+                            </span>
+                        </label>
+                        <input className='input-file-btn' type='file' id='photoURL' onChange={this.handleChange}/>
                     </div>
                     <div className='col-6'>
                         <h2>{profile.firstName} {profile.lastName}</h2>

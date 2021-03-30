@@ -1178,7 +1178,6 @@ h6:first-child {
     width: 100%;
 }
 
-.input-file-label,
 .input-btn {
     display: inline-block;
     width: auto;
@@ -1192,9 +1191,12 @@ h6:first-child {
     transition: all .25s ease-in-out;
 }
 
-.input-file-label:hover,
 .input-btn:hover {
     background: #5895e0;
+}
+
+.input-file-label {
+    cursor: pointer;
 }
 
 .input-file-btn {
