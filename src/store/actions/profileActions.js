@@ -11,7 +11,6 @@ export const updateProfilePhoto = file => {
         dispatch({type: UPDATE_PROFILE_PHOTO});
 
         storage.ref('users/' + file.name).put(file).then(res => {
-            console.log(res)
             if (res.ref.fullPath === user.photoURL) {
                 dispatch({type: UPDATE_PROFILE_PHOTO_SUCCESS});
                 return;
@@ -29,7 +28,6 @@ export const updateProfilePhoto = file => {
                 firestore.collection('users/').doc(user.uid).update({
                     photoURL: url,
                 });
-                dispatch({type: UPDATE_PROFILE_PHOTO_SUCCESS});
             });
 
         }).catch(err => {
