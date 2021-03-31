@@ -18,7 +18,9 @@ class ProfileSettingsForm extends Component {
     };
 
     handleChange = e => {
-        this.props.updateProfilePhoto(e.target.files[0]);
+        if (e.target.files[0]) {
+            this.props.updateProfilePhoto(e.target.files[0]);
+        }
     }
 
     handleSubmit = e => {
