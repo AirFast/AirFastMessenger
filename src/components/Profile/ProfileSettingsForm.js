@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styles from './Profile.module.css';
-import {updateProfile} from '../../store/actions/profileActions';
+import {updateProfilePhoto} from '../../store/actions/profileActions';
 
 class ProfileSettingsForm extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class ProfileSettingsForm extends Component {
     };
 
     handleChange = e => {
-        this.props.updateProfile(e.target.files[0]);
+        this.props.updateProfilePhoto(e.target.files[0]);
     }
 
     handleSubmit = e => {
@@ -29,11 +29,13 @@ class ProfileSettingsForm extends Component {
     render() {
         const {profile} = this.props;
 
+        console.log(profile)
+
         return (
             <>
                 <div className='col-4 t-center'>
                     <label htmlFor='photoURL' className='input-file-label'>
-                            <span className={styles.profileSettingsAvatar + ' ' + styles.isLoading}>
+                            <span className={profile.isUpdatingPhoto ? styles.profileSettingsAvatar + ' ' + styles.isLoading : styles.profileSettingsAvatar}>
                                 {profile.photoURL ? <img src={profile.photoURL}
                                                          alt={profile.firstName + ' ' + profile.lastName}/> : profile.initials}
                             </span>
@@ -51,11 +53,14 @@ class ProfileSettingsForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    profile: state.firebase.profile,
+    profile: {
+        ...state.firebase.profile,
+        ...state.profile
+    },
 });
 
 const mapDispatchToProps = dispatch => ({
-    updateProfile: file => dispatch(updateProfile(file)),
+    updateProfilePhoto: file => dispatch(updateProfilePhoto(file)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileSettingsForm);
