@@ -1,14 +1,14 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import ProfileSettingsForm from '../components/Profile/ProfileSettingsForm';
+import ProfileForm from '../components/Profile/ProfileForm';
 
 const Profile = ({auth}) => {
     if (!auth.uid) return <Redirect to={'/login'}/>
 
     return (
         <div className='row p-60'>
-            <ProfileSettingsForm/>
+            <ProfileForm/>
         </div>
     );
 }
