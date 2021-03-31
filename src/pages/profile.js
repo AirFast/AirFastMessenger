@@ -3,12 +3,10 @@ import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import ProfileSettingsForm from '../components/Profile/ProfileSettingsForm';
 
-const Profile = (props) => {
-
-    const {auth, profile} = props;
+const Profile = ({auth, profile}) => {
     if (!auth.uid) return <Redirect to={'/login'}/>
 
-    console.log(profile)
+    console.log(auth, profile)
 
     return (
         <div className='row p-60'>
