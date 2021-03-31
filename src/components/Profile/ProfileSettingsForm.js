@@ -6,9 +6,6 @@ import {updateProfilePhoto} from '../../store/actions/profileActions';
 class ProfileSettingsForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            file: null
-        }
 
         this.handleChange = this.handleChange.bind(this);
         // this.handleFocus = this.handleFocus.bind(this);
@@ -29,7 +26,7 @@ class ProfileSettingsForm extends Component {
     }
 
     render() {
-        const {profile} = this.props;
+        const {profile, profileForm} = this.props;
 
         console.log(profile)
 
@@ -37,7 +34,7 @@ class ProfileSettingsForm extends Component {
             <>
                 <div className='col-4 t-center'>
                     <label htmlFor='photoURL' className='input-file-label'>
-                            <span className={profile.isUpdatingPhoto ? styles.profileSettingsAvatar + ' ' + styles.isLoading : styles.profileSettingsAvatar}>
+                            <span className={profileForm.isUpdatingPhoto ? styles.profileSettingsAvatar + ' ' + styles.isLoading : styles.profileSettingsAvatar}>
                                 {profile.photoURL ? <img src={profile.photoURL}
                                                          alt={profile.firstName + ' ' + profile.lastName}/> : profile.initials}
                             </span>
@@ -55,10 +52,8 @@ class ProfileSettingsForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    profile: {
-        ...state.firebase.profile,
-        ...state.profile
-    },
+    profile: state.firebase.profile,
+    profileForm: state.profile
 });
 
 const mapDispatchToProps = dispatch => ({
